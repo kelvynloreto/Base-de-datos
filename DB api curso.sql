@@ -247,6 +247,45 @@ insert into user_course_states (
  );
 
 
+-- join con view
+select 
+	users.id, 
+	users.name, 
+	curses.title ,
+	course_states.state
+from users 
+inner join 
+	user_course_states
+on
+	users.id = user_course_states.user_id
+inner join
+	curses
+on curses.id = user_course_states.curse_id
+inner  join 
+course_states 
+on course_states.id =  user_course_states.course_state_id 
+;
+
+
+-- view
+create  view v_courses_users as select 
+	users.id, 
+	users.name, 
+	curses.title ,
+	course_states.state
+from users 
+inner join 
+	user_course_states
+on
+	users.id = user_course_states.user_id
+inner join
+	curses
+on curses.id = user_course_states.curse_id
+inner  join 
+course_states 
+on course_states.id =  user_course_states.course_state_id 
+;
+
 
 
 
